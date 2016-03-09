@@ -1,0 +1,29 @@
+{
+  "name": "HN",
+  "version": "0.1.0",
+  "description": "react sample using HN API",
+  "main": "index.js",
+  "scripts": {
+    "build": "NODE_ENV=production browserify -d src/index.js -o public/bundle.js",
+    "watch": "watchify src/index.js -dv -o public/bundle.js",
+    "browser": "browser-sync start --files public/* --server public",
+    "start": "npm run watch & npm run browser"
+  },
+  "browserify": {
+    "transform": [
+      ["babelify"]
+    ]
+  },
+  "author": "wanzhongling",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.13.2",
+    "whatwg-fetch": "^0.7.0"
+  },
+  "devDependencies": {
+    "babelify": "^6.0.2",
+    "browser-sync": "^2.6.4",
+    "browserify": "^9.0.8",
+    "watchify": "^3.1.1"
+  }
+}
