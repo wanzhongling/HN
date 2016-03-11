@@ -1,0 +1,183 @@
+// 颜色
+@orange: #ff6633;
+@white: #fff;
+@title : #333;
+@intro:#666;
+@text : #999;
+
+// 圆角
+.radius(@r) {
+    border-radius: @arguments;
+    -webkit-border-radius: @arguments;
+}
+
+//画圆 
+.circle(@width) {
+    .radius(@width/2);
+    .size(@width, @width);
+}
+// 居左
+.left(){
+    text-align:left;
+}
+// 居中
+.center() {
+    text-align: center;
+}
+// 居右
+.right(){
+    text-align:right;
+}
+// 盒模型
+.border-box() {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+// 尺寸
+.size(@width;@height) {
+    width: @width;
+    height: @height;
+}
+
+// 位置
+.pos(@left;@top) {
+    left: @left;
+    top: @top;
+}
+
+.abs(@left;@top) {
+    position: absolute;
+    .pos(@left; @top);
+}
+
+// 相对定位
+.rel() {
+    position: relative;
+}
+
+// 旋转
+.rotate(@angel) {
+    -webkit-transform: rotate(@arguments);
+    -moz-transform: rotate(@arguments);
+    -o-transform: rotate(@arguments);
+    transform: rotate(@arguments);
+}
+
+// 截字
+.limitText(@line){
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: @line;
+    -webkit-box-orient: vertical;
+}
+
+// -webkit-box布局
+.wbox() {
+    display: box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display:-webkit-flex;
+    display:flex;
+}
+// 自适应
+.wflex(){
+    -webkit-box-flex:1;
+    -webkit-flex:1;
+    box-flex:1;
+    -ms-box-flex:1;
+    -ms-flex:1;
+    flex:1;
+}
+// 布局
+.wcenter(){
+    -webkit-box-align: center;
+    -ms-box-align:center;
+    box-align:center;
+}
+//clip
+.textClip(){
+    overflow: hidden;
+    text-overflow: clip;
+    -o-text-overflow: clip;
+    -webkit-text-overflow: clip;
+    -moz-text-overflow: clip;
+    white-space: nowrap;
+}
+.bk(){
+    display:block;
+}
+.hide(){
+    display: none;
+}
+.show(){
+    display:block;
+}
+.ibk(){
+    display:inline-block;
+}
+// 字体大小
+.f12(){
+    font-size:12px;
+}
+.f14(){
+    font-size:14px;
+}
+.f15(){
+    font-size:15px;
+}
+.f16(){
+    font-size:16px;
+}
+.f17(){
+    font-size:17px;
+}
+.f18(){
+    font-size:18px;
+}
+.fl(){
+    float:left;
+}
+.fr(){
+    float:right;
+}
+.ellipsis(){
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+}
+.relative(){
+    position:relative;
+}
+
+.bgBorder(){
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAbSURBVAiZY/z//z8DAwMDA8ujR4/+MzAwMAAAR50GqOe+oUMAAAAASUVORK5CYII=) repeat-x 0 bottom;
+    background-size: auto 1px;
+}
+.bgBorderTop(){
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAbSURBVAiZY/z//z8DAwMDA8ujR4/+MzAwMAAAR50GqOe+oUMAAAAASUVORK5CYII=) repeat-x 0 top;
+    background-size: auto 1px;
+}
+// 线性渐变
+.linear-gradient(@degree; @colors)when(@degree=0){
+  background-image: -webkit-linear-gradient(@degree,@colors);
+  background-image: -ms-linear-gradient(@degree,@colors);
+  background-image: linear-gradient(90deg,@colors);
+}
+// 线性渐变
+// .linear-gradient(60deg; #000, #fff);
+.linear-gradient(@degree; @colors)when(default()){
+  @degreeW3c : abs(@degree) + 90;
+  background-image: -webkit-linear-gradient(@degree,@colors);
+  background-image: -ms-linear-gradient(@degree,@colors);
+  background-image: linear-gradient(@degreeW3c,@colors);
+}
+//:after清除浮动
+.clear(){
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}

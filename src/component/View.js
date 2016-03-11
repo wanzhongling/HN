@@ -1,50 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router'
 import List from './List';
 
-const style = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    width: 900
-  },
-  title: {
-    flexBasis: 500,
-    alignSelf: 'center',
-    padding: 10
-  },
-  filter: {
-    flexBasis: 400,
-    alignSelf: 'center'
-
-  },
-  stories: {
-    flexBasis: 900,
-    alignSelf: 'center'
-  }
-};
-
-const App = React.createClass({
+const View = React.createClass({
   getInitialState(){
     return {
-      stories: [],
-      filterText: '',
+      items: [],
       count:20,
       idArray:[],
       cur:0,
       loading:true,
       hasData:false
     }
-  },
-
-  filterStories() {
-    const filterText = this.state.filterText.toLowerCase();
-    return this.state.stories.filter(story => {
-      return !filterText ||
-        story.title.toLowerCase().indexOf(filterText) !== -1 ||
-        story.by.toLowerCase().indexOf(filterText) !== -1
-        ;
-    });
   },
 
   componentDidMount() {
@@ -71,7 +38,7 @@ const App = React.createClass({
       .then(story => {
         story.rank = _this.state.cur*_this.state.count + index + 1;
         this.setState({
-          stories: _this.state.stories.concat([story]).sort((a,b) => a.rank - b.rank)
+          items: _this.state.items.concat([story]).sort((a,b) => a.rank - b.rank)
         });
       })
       .then(()=>{
@@ -103,19 +70,16 @@ const App = React.createClass({
       moreClass = '',
       moreText = '加载完毕';
     }
-    console.log(this.state.hasData,this.state.loading)
     return (
-      <div style={style.root}>
-        <div style={style.title}>
-          <h1>HN</h1>
+        <div className="app">
+          <header className="header">HN list</header>
+          <section className="content">
+            <List items={this.state.items} />
+            <div className="more-box"><a href="javascript:;" className={`btnMore hide${moreClass}`} onClick={this.clickMore}>{moreText}</a></div>
+          </section>
         </div>
-        <div style={style.stories}>
-          <List stories={this.filterStories()} />
-          <a href="javascript:;" className={`hide${moreClass}`} onClick={this.clickMore}>{moreText}</a>
-        </div>
-      </div>
     )
   }
 });
 
-export default App;
+export default View;
