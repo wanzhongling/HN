@@ -74,7 +74,7 @@ const View = React.createClass({
         <div className="app">
           <header className="header">HN list</header>
           <section className="content">
-            <List items={this.state.items} />
+            <List key="list" items={this.state.items} />
             <div className="more-box"><a href="javascript:;" className={`btnMore hide${moreClass}`} onClick={this.clickMore}>{moreText}</a></div>
           </section>
         </div>

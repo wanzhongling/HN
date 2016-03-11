@@ -25,15 +25,15 @@ const App = React.createClass({
     const _this = this;
 
     Utils.checkLogin(function(user){
-      logContent.push(<span className="log-btnbox">hello {user}  <a href="javascript:;" className="link" onClick={_this.logOut}>logout</a></span>);
+      logContent.push(<span key="logout" className="log-btnbox">hello {user}  <a href="javascript:;" className="link" onClick={_this.logOut}>logout</a></span>);
     },function(){
-      logContent.push(<span className="log-btnbox"><Link to="login" className="link">logIn</Link></span>);
+      logContent.push(<span key="login" className="log-btnbox"><Link to="login" className="link">logIn</Link></span>);
     });
 
     return (
-      <div>
-        <nav className="nav">Logo
-          <Link to="list" className="link nav-link">list</Link>
+      <div key="app">
+        <nav key="nav" className="nav">Logo
+          <Link key="listlink" to="list" className="link nav-link">list</Link>
           {logContent}
         </nav>
         {content}

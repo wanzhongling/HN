@@ -55,7 +55,7 @@ const Login = React.createClass({
   
   render() {
     return (
-      <div className="app">
+      <div key="loginapp" className="app">
         <header className="header">login</header>
         <section className="content">
           <form className="form">

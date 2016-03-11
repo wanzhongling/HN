@@ -14,7 +14,7 @@ export default React.createClass({
     },
     render() {
         return (
-            <div className="not-found">
+            <div key="notfound" className="not-found">
                 <h1>没有找到该页面！</h1>
             </div>
         );
