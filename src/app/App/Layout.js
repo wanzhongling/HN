@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import List from '../../component/View.js'; // List
 import Utils from '../../utils/index.js';
 
 
@@ -19,8 +20,8 @@ const App = React.createClass({
 
   render() {
     let { children, params } = this.props,
-      content = children,
-      logContent = [];
+        content = children,
+        logContent = [];
     const _this = this;
 
     Utils.checkLogin(function(user){
